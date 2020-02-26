@@ -18,19 +18,19 @@ export default class Movie extends React.Component {
       this.fetchMovie(newProps.match.params.id);
     }
   }
-  // deleteMovie = () => {
-  //   axios.delete(`http://localhost:5000/api/movies/${this.props.match.params.id}`)
-  //   .then(res => {
-  //     this.setState({movie: null});
-  //     console.log(this.props);
-  //      console.log(res); this.props.history.push("/")
-  //      this.props.setSavedList(this.props.savedList.filter(savedMovie => savedMovie.id !== parseInt(this.props.match.params.id )))
-  //   })
-  // }
+  deleteMovie = () => {
+    axios.delete(`http://localhost:9000/api/movies/${this.props.match.params.id}`)
+    .then(res => {
+      this.setState({movie: null});
+      console.log(this.props);
+       console.log(res); this.props.history.push("/")
+       this.props.setSavedList(this.props.savedList.filter(savedMovie => savedMovie.id !== parseInt(this.props.match.params.id )))
+    })
+  }
 
   fetchMovie = id => {
     axios
-      .get(`http://localhost:5000/api/movies/${id}`)
+      .get(`http://localhost:9000/api/movies/${id}`)
       .then(res => this.setState({ movie: res.data }, console.log(res)))
       .catch(err => console.log(err.response));
   };
